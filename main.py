@@ -20,20 +20,17 @@ def cache_zip(zip_file, dir_path):
 
 def cached_files():
     directory = "cache"
-    abs_path = os.path.abspath(directory)
     abs_list = []
     for file in os.listdir(directory):
-        abs_list.append(f"{abs_path}\{file}")
+        abs_list.append(f"{os.path.abspath(directory)}\{file}")
     return abs_list
 
 
 def find_password(cache_listdir):
     for file in cache_listdir:
-        with open(file) as my_file:
-            datafile = my_file.readlines()
-            for line in datafile:
-                if "password" in line:
-                    return line[line.find(" ") + 1 : line.find(r'"\"')]
+        for line in open(file).readlines():
+            if "password" in line:
+                return line[line.find(" ") + 1 : line.find(r'"\"')]
 
 
 if __name__ == "__main__":
