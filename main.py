@@ -27,7 +27,6 @@ def cached_files():
     return abs_list
 
 
-### REFACTOREN
 def find_password(cache_listdir):
     for file in cache_listdir:
         with open(file) as my_file:
